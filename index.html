@@ -5,31 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>??????</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
 </head>
 <body>
     <form id="access" onsubmit="checkAccess(event)">
         <input type="text" id="passwordField" autofocus autocomplete="off">
     </form>
-
-    <script>
-         function checkAccess(event) {
-                    event.preventDefault();
-        
-                    const input = document.getElementById('passwordField');
-                    const pass = input.value;
-                    const correctPassword = "gator"; 
-        
-                    if (pass === correctPassword) {
-
-                        window.location.href = "https://www.google.com"; 
-                    } else {
-                        input.value = "";   
-                    }
-                }
-                document.addEventListener('click', () => {
-                    document.getElementById('passwordField').focus();
-                });
-    </script>
-
 </body>
 </html>
