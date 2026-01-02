@@ -8,22 +8,28 @@
 </head>
 <body>
     <form id="access" onsubmit="checkAccess(event)">
-        <input type="password" id="passwordField">
+        <input type="text" id="passwordField" autofocus autocomplete="off">
     </form>
 
     <script>
-    function checkAccess(event) {
-        event.preventDefault();
+         function checkPassword(event) {
+                    event.preventDefault();
+        
+                    const input = document.getElementById('passwordField');
+                    const pass = input.value;
+                    const correctPassword = "gator"; 
+        
+                    if (pass === correctPassword) {
 
-        const password = document.getElementById('passwordField').value;
-        const correctPassword = "gator";
-
-        if (password === correctPassword) {
-            window.location.href = "success_page.html";
-        } else {
-            document.getElementById('passwordField').value = "";
-        }
-    }
+                        window.location.href = "https://www.google.com"; 
+                    } else {
+                        input.value = ""; 
+                        input.focus();   
+                    }
+                }
+                document.addEventListener('click', () => {
+                    document.getElementById('passwordField').focus();
+                });
     </script>
 
 </body>
