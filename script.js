@@ -11,6 +11,3 @@ function typeWriter() {
     textToType = textToType.splice(1, textToType.length)
     index = 0;
 }
-
-// Start the typing effect when the script loads
-typeWriter();
