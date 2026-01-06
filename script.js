@@ -1,20 +1,16 @@
-function checkAccess(event) {
-    event.preventDefault();
+let textToType = ['Hello', 'Hi', 'Salutations']; 
+const typingSpeed = 50; 
+let index = 0;
 
-    const input = document.getElementById('passwordField');
-    const pass = input.value;
-    const correctPassword = "gator";
-
-    if (pass === correctPassword) {
-        window.location.href = "https://www.google.com";
-    } else {
-        input.value = "";
-        input.focus();
+function typeWriter() {
+    if (index < textToType.length) {
+        textElement.innerHTML += textToType.charAt(index);
+        index++;
+        setTimeout(typeWriter, typingSpeed);
     }
+    textToType = textToType.splice(1, textToType.length)
+    index = 0;
 }
 
-document.getElementById('access').addEventListener('submit', checkAccess);
-
-document.addEventListener('click', () => {
-    document.getElementById('passwordField').focus();
-});
+// Start the typing effect when the script loads
+typeWriter();
