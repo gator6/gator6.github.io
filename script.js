@@ -6,7 +6,7 @@ function typeWriter() {
   const textElement = document.getElementById('text');
   const cursorElement = document.querySelector('.cursor');
 
-  if (i < text.length) {
+  if (i <= text.length) {
     cursorElement.classList.remove('blink');
     
     textElement.innerHTML += text.charAt(i);
