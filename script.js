@@ -1,6 +1,7 @@
 const isMobile = /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent);
+let text = "";
 if (isMobile) {
-      const text = "Hello, people of Gainesville. This is the Viddler speaking.\n\n" +
+      text = "Hello, people of Gainesville. This is the Viddler speaking.\n\n" +
       "This city likes its stories simple: bright colors, loud nights, familiar rituals that repeat until no one remembers why they started." +
       "BatVid became part of that routine. A shape in the background. A presence everyone talks about, few actually observe. So I took him" + 
       "out of circulation. Not to erase him, but to see what happens when the outline disappears and only the details remain.\n\n" +
@@ -13,7 +14,7 @@ if (isMobile) {
       "kept talking over. Some truths don’t hide. They wait. And they only reveal themselves to those who are willing" +
       "to actually watch.";
     } else {
-      const text = "Hello, people of Gainesville. This is the Viddler speaking.\n\n" +
+      text = "Hello, people of Gainesville. This is the Viddler speaking.\n\n" +
       "This city likes its stories simple: bright colors, loud nights, familiar rituals that repeat until no one remembers why they started.\n" +
       "BatVid became part of that routine. A shape in the background. A presence everyone talks about, few actually observe. So I took him\n" + 
       "out of circulation. Not to erase him, but to see what happens when the outline disappears and only the details remain.\n\n" +
