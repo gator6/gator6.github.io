@@ -4,10 +4,6 @@ body {
   color: #33FF33;           
 }
 
-#text {
-    white-space: pre-wrap;
-}
-
 .cursor {
   display: inline-block;
   width: 10px;
