@@ -49,7 +49,7 @@ function applyFade(elementId, word) {
     const container = document.getElementById(elementId);
     const originalText = container.innerText; 
     const regex = new RegExp(`\\b(${word})\\b`);
-    container.innerHTML = originalText.replace(regex, `<span class="keep-visible">$1</span>`);
+    container.innerText = originalText.replace(regex, `<span class="keep-visible">$1</span>`);
     container.classList.add("fade-active");
 }
 
