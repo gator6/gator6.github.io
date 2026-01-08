@@ -42,19 +42,19 @@ function typeWriter(elementID, word = "", flag = 0) {
     setTimeout(() => typeWriter(elementID, word, flag), speed);
   } else {
     cursorElement.classList.add('blink');
-    if (!flag) {
+    if (flag == 0) {
           applyFade(elementID, word);
     } 
   }
 }
 
 function applyFade(elementID, word) {
-    events.forEach(event => window.addEventListener(event, interruptFade));
     const container = document.getElementById(elementID);
     const originalText = container.innerText.replace(/\r?\n/g, '<br>');
     const regex = new RegExp(`\\b(${word})\\b`);
     container.innerHTML = originalText.replace(regex, `<span class="keep-visible">$1</span>`);
     container.classList.add("fade-active");
+    events.forEach(event => window.addEventListener(event, interruptFade));
 }
 
 function interruptFade() {
