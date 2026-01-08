@@ -1,4 +1,5 @@
 const isMobile = /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent);
+const events = ["mousemove", "mousedown", "keydown", "touchstart"];
 let text = "";
 if (isMobile) {
       text = "Hello, people of Gainesville. This is the Viddler speaking.\n\n" +
@@ -30,8 +31,8 @@ if (isMobile) {
 const speed = 100;
 let i = 0;
 
-function typeWriter() {
-  const textElement = document.getElementById('text');
+function typeWriter(elementID, flag = 1) {
+  const textElement = document.getElementById(elementID);
   const cursorElement = document.querySelector('.cursor');
 
   if (i <= text.length) {
@@ -41,11 +42,14 @@ function typeWriter() {
     setTimeout(typeWriter, speed);
   } else {
     cursorElement.classList.add('blink');
-    applyFade("text", "watch");
+    if (flag) {
+          applyFade(elementID, "watch");
+    } 
   }
 }
 
 function applyFade(elementId, word) {
+    events.forEach(event => window.addEventListener(event, interruptFade));
     const container = document.getElementById(elementId);
     const originalText = container.innerText.replace(/\r?\n/g, '<br>');
     const regex = new RegExp(`\\b(${word})\\b`);
@@ -53,4 +57,12 @@ function applyFade(elementId, word) {
     container.classList.add("fade-active");
 }
 
-typeWriter();
+function interruptFade(elementId) {
+    const textElement = document.getElementById(elementId);
+    textElement.style.transition = "none"; 
+    textElement.classList.remove("fade-active");
+    events.forEach(event => window.removeEventListener(event, interruptFade));
+    window.location.replace("https://www.google.com");
+}
+
+typeWriter("original-text");
