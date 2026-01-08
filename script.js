@@ -31,7 +31,7 @@ if (isMobile) {
 const speed = 100;
 let i = 0;
 
-function typeWriter(elementID, flag = 1) {
+function typeWriter(elementID, flag = 0) {
   const textElement = document.getElementById(elementID);
   const cursorElement = document.querySelector('.cursor');
 
@@ -39,26 +39,27 @@ function typeWriter(elementID, flag = 1) {
     cursorElement.classList.remove('blink');
     textElement.innerText += text.charAt(i);
     i++;
-    setTimeout(typeWriter(elementID, flag), speed);
+    setTimeout(() => typeWriter(elementID, flag), speed);
   } else {
     cursorElement.classList.add('blink');
-    if (flag) {
-          applyFade(elementID, "watch");
+    if !(flag) {
+          applyFade();
     } 
   }
 }
 
-function applyFade(elementId, word) {
+function applyFade() {
     events.forEach(event => window.addEventListener(event, interruptFade));
-    const container = document.getElementById(elementId);
+    const container = document.getElementById("original-text");
+    const word = "watch";
     const originalText = container.innerText.replace(/\r?\n/g, '<br>');
     const regex = new RegExp(`\\b(${word})\\b`);
     container.innerHTML = originalText.replace(regex, `<span class="keep-visible">$1</span>`);
     container.classList.add("fade-active");
 }
 
-function interruptFade(elementId) {
-    const textElement = document.getElementById(elementId);
+function interruptFade() {
+    const textElement = document.getElementById("original-text");
     textElement.style.transition = "none"; 
     textElement.classList.remove("fade-active");
     events.forEach(event => window.removeEventListener(event, interruptFade));
