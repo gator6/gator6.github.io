@@ -39,10 +39,10 @@ function typeWriter(elementID, word = "", flag = 0) {
     cursorElement.classList.remove('blink');
     textElement.innerText += text.charAt(i);
     i++;
-    setTimeout(() => typeWriter(elementID, flag), speed);
+    setTimeout(() => typeWriter(elementID, word, flag), speed);
   } else {
     cursorElement.classList.add('blink');
-    if !(flag) {
+    if (!flag) {
           applyFade(elementID, word);
     } 
   }
