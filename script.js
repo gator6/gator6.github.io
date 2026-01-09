@@ -2,22 +2,22 @@ const isMobile = /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent);
 const events = ["mousemove", "mousedown", "keydown", "touchstart"];
 let text = "";
 let iMsg = "";
-let question_mark = "        ????????????????\n" +
-                    "      ?????????  ??????????\n" +
-                    "     ?????            ??????\n" +
-                    "     ????              ?????\n" +
-                    "                       ?????\n" +
-                    "                    ???????\n" +
-                    "                 ???????\n" +
-                    "               ???????\n" +
-                    "              ?????\n" +
-                    "             ?????\n" +
-                    "             ?????\n" +
-                    "             ?????\n" +
-                    "             ?????\n\n" +
-                    "              ???\n" +
-                    "             ?????\n" +
-                    "              ??\n\n\n";
+let question_mark = "~~~~~~~~????????????????\n" +
+                    "~~~~~~?????????~~??????????\n" +
+                    "~~~~~?????~~~~~~~~~~~??????\n" +
+                    "~~~~~????~~~~~~~~~~~~~~?????\n" +
+                    "~~~~~~~~~~~~~~~~~~~~~~~?????\n" +
+                    "~~~~~~~~~~~~~~~~~~~~???????\n" +
+                    "~~~~~~~~~~~~~~~~~???????\n" +
+                    "~~~~~~~~~~~~~~~???????\n" +
+                    "~~~~~~~~~~~~~~?????\n" +
+                    "~~~~~~~~~~~~~?????\n" +
+                    "~~~~~~~~~~~~~?????\n" +
+                    "~~~~~~~~~~~~~?????\n" +
+                    "~~~~~~~~~~~~~?????\n\n" +
+                    "~~~~~~~~~~~~~~???\n" +
+                    "~~~~~~~~~~~~~?????\n" +
+                    "~~~~~~~~~~~~~~??\n\n\n";
 
 function generateRiddleMeThis(length = 320) {
     const base = "Riddle me this";
@@ -101,7 +101,7 @@ function typeWriter(elementID, word, flag = 0, i = 0) {
   if (i < text.length) {
     cursorElement.classList.remove('blink');
     let char = text.charAt(i);
-    if (char === ' ') char = '&nbsp;';
+    if (char === '~') char = '&nbsp;';
     if (char === '\n') char = '<br>';
     textElement.innerHTML += char;
     if (flag == 1 && speed > 1) speed -= 1;
@@ -116,7 +116,7 @@ function typeWriter(elementID, word, flag = 0, i = 0) {
 function applyFade(elementID, word) {
     const container = document.getElementById(elementID);
     const originalHTML = container.innerHTML;
-    const regex = new RegExp(`\\b(${word})\\b`);
+    const regex = new RegExp('\\b(${word})\\b');
     container.innerHTML = originalHTML.replace(regex, `<span class="keep-visible">$1</span>`);
     container.classList.add("fade-active");
     events.forEach(event => window.addEventListener(event, interruptFade));
