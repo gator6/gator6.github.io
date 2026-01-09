@@ -30,7 +30,7 @@ if (isMobile) {
     }
 
 let typewriterTimer = null;
-let speed = 1;
+let speed = 100;
 
 function typeWriter(elementID, word = "", flag, i = 0) {
   const textElement = document.getElementById(elementID);
