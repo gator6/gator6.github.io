@@ -38,7 +38,7 @@ function typeWriter(elementID, word, flag, i = 0) {
     cursorElement.classList.remove('blink');
     textElement.innerText += text.charAt(i);
     i++;
-    setTimeout(() => typeWriter(elementID, word, flag), speed);
+    setTimeout(() => typeWriter(elementID, word, flag, i), speed);
   } else {
     cursorElement.classList.add('blink');
     if (flag == 0) {
@@ -75,4 +75,4 @@ function interruptFade() {
     typeWriter("interrupt-text", "", 1); 
 }
 
-typeWriter("original-text", "watch");
+typeWriter("original-text", "watch", 0);
