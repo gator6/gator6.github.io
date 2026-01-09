@@ -19,7 +19,7 @@ let question_mark = "~~~~~~~~????????????????\n" +
                     "~~~~~~~~~~~~~?????\n" +
                     "~~~~~~~~~~~~~~??\n\n\n";
 
-function generateRiddleMeThis(length = 240) {
+function generateRiddleMeThis(length = 160) {
     const base = "Riddle me this";
     const symbols = ['!', '$', '@', '?', '1', '3', '0', '#', '%', '*'];
     const result = [];
@@ -92,7 +92,7 @@ if (isMobile) {
              "So tell me...\n\n\n" + question_mark +generateRiddleMeThis();
     }
 
-let speed = 1;
+let speed = 100;
 
 function typeWriter(elementID, word, flag = 0, i = 0) {
   const textElement = document.getElementById(elementID);
