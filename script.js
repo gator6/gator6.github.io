@@ -19,7 +19,7 @@ let question_mark = "        ????????????????\n" +
                     "             ?????\n" +
                     "              ??\n\n\n";
 
-function generateRiddleMeThis(length = 1000) {
+function generateRiddleMeThis(length = 320) {
     const base = "Riddle me this";
     const symbols = ['!', '$', '@', '?', '1', '3', '0', '#', '%', '*'];
     const result = [];
