@@ -4,8 +4,8 @@ let text = "";
 if (isMobile) {
       text = "Hello, people of Gainesville. This is the Viddler speaking.\n\n" +
       "This city likes its stories simple: bright colors, loud nights, familiar rituals that repeat until no one remembers why they started. " +
-      "Batvid became part of that routine. A shape in the background. A presence everyone talks about, few actually observe. So I took him " + 
-      "out of circulation. Not to erase him, but to see what happens when the outline disappears and only the details remain.\n\n" +
+      "Batvid became part of that routine. A shape in the background. A presence everyone talks about, few actually observe. So I took " + 
+      "him out of circulation. Not to erase him, but to see what happens when the outline disappears and only the details remain.\n\n" +
       "I left traces instead of directions. You’ll find them if you slow down—if you’re willing to sit in the dark a little longer than is " + 
       "comfortable, to notice what lingers between moments rather than what announces itself. This isn’t a rescue and it isn’t a chase. " + 
       "It’s an examination of attention. Most people skim. They jump ahead. They miss what matters because it doesn’t demand them " + 
@@ -17,8 +17,8 @@ if (isMobile) {
     } else {
       text = "Hello, people of Gainesville. This is the Viddler speaking.\n\n" +
       "This city likes its stories simple: bright colors, loud nights, familiar rituals that repeat until no one remembers why they started.\n" +
-      "Batvid became part of that routine. A shape in the background. A presence everyone talks about, few actually observe. So I took him\n" + 
-      "out of circulation. Not to erase him, but to see what happens when the outline disappears and only the details remain.\n\n" +
+      "Batvid became part of that routine. A shape in the background. A presence everyone talks about, few actually observe. So I took\n" + 
+      "him out of circulation. Not to erase him, but to see what happens when the outline disappears and only the details remain.\n\n" +
       "I left traces instead of directions. You’ll find them if you slow down—if you’re willing to sit in the dark a little longer than is\n" + 
       "comfortable, to notice what lingers between moments rather than what announces itself. This isn’t a rescue and it isn’t a chase.\n" + 
       "It’s an examination of attention. Most people skim. They jump ahead. They miss what matters because it doesn’t demand them\n" + 
@@ -28,22 +28,27 @@ if (isMobile) {
       "kept talking over. Some truths don’t hide. They wait. And they only reveal themselves to those who are willing\n" +
       "to actually watch.";
     }
-
-let typewriterTimer = null;
 let speed = 100;
+let i = 0;
 
-function typeWriter(elementID, word = "", flag, i = 0) {
+function typeWriter(elementID, word, flag = 0) {
   const textElement = document.getElementById(elementID);
   const cursorElement = document.querySelector('.cursor');
 
   if (i <= text.length) {
     cursorElement.classList.remove('blink');
-    textElement.textContent += text.charAt(i);
-    typewriterTimer = setTimeout(() => typeWriter(elementID, word, flag, i + 1), speed);
+    textElement.innerText += text.charAt(i);
+    i++;
+    setTimeout(() => typeWriter(elementID, word, flag), speed);
   } else {
+    i = 0;
     cursorElement.classList.add('blink');
-    if (flag === 0) applyFade(elementID, word);
-    if (flag === 1) window.location.replace("https://www.google.com");
+    if (flag == 0) {
+          applyFade(elementID, word);
+    } 
+    if (flag == 1) {
+          window.location.replace("https://www.google.com");
+    }
   }
 }
 
@@ -68,9 +73,8 @@ function interruptFade() {
     newTextContainer.style.marginTop = "20px";
     document.body.appendChild(newTextContainer);
     newTextContainer.appendChild(cursor);
-    clearTimeout(typewriterTimer);
     text = "blah blah blah";
-    typeWriter("interrupt-text", "", 1);
+    typeWriter("interrupt-text", "", 1); 
 }
 
-typeWriter("original-text", "watch", 0);
+typeWriter("original-text", "watch");
