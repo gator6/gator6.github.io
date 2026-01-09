@@ -5,7 +5,7 @@ body {
 }
 
 #original-text {
-    transition: color 10s ease;
+    transition: color 20s ease;
     color: #33FF33; 
 }
 
