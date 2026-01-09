@@ -23,7 +23,7 @@ function generateRiddleMeThis(length = 1000) {
     const base = "Riddle me this";
     const symbols = ['!', '$', '@', '?', '1', '3', '0', '#', '%', '*'];
     const result = [];
-    if (!isMobile()) {
+    if (!isMobile) {
         for (let i = 0; i < 4; i++) {
             result.push(base + '.');
         }
