@@ -23,21 +23,14 @@ function generateRiddleMeThis(length = 1000) {
     const base = "Riddle me this";
     const symbols = ['!', '$', '@', '?', '1', '3', '0', '#', '%', '*'];
     const result = [];
-
-    // Add 4 normal lines for computers only
     if (!isMobile()) {
         for (let i = 0; i < 4; i++) {
             result.push(base + '.');
         }
     }
-
     for (let i = 0; i < length; i++) {
         let phrase = base;
-
-        // Gradually increase chaos based on position
         const chaosLevel = i / length;
-
-        // Randomly corrupt letters
         phrase = phrase.split('').map(char => {
             if (Math.random() < chaosLevel * 0.3) {
                 if (/[a-zA-Z]/.test(char)) {
@@ -47,23 +40,16 @@ function generateRiddleMeThis(length = 1000) {
             }
             return char;
         }).join('');
-
-        // Randomly change capitalization more as chaos increases
         if (Math.random() < chaosLevel * 0.5) {
             phrase = Math.random() < 0.5 ? phrase.toUpperCase() : phrase.toLowerCase();
         }
-
-        // Randomly add extra punctuation as chaos increases
         if (Math.random() < chaosLevel) {
             phrase += symbols[Math.floor(Math.random() * symbols.length)] + symbols[Math.floor(Math.random() * symbols.length)];
         } else {
             phrase += '.';
         }
-
         result.push(phrase);
     }
-
-    // Return as a single string
     return result.join(' ');
 }
 
