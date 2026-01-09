@@ -38,7 +38,7 @@ function typeWriter(elementID, word = "", flag, i = 0) {
 
   if (i <= text.length) {
     cursorElement.classList.remove('blink');
-    textElement.textContent += text.charAt(index);
+    textElement.textContent += text.charAt(i);
     typewriterTimer = setTimeout(() => typeWriter(elementID, word, flag, i + 1), speed);
   } else {
     cursorElement.classList.add('blink');
