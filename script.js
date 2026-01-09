@@ -30,7 +30,6 @@ if (isMobile) {
     }
 
 let speed = 1;
-let typingTracker;
 
 function typeWriter(elementID, word, flag = 0, i = 0) {
   const textElement = document.getElementById(elementID);
@@ -39,7 +38,7 @@ function typeWriter(elementID, word, flag = 0, i = 0) {
   if (i <= text.length) {
     cursorElement.classList.remove('blink');
     textElement.innerText += text.charAt(i);
-    typingTracker = setTimeout(() => typeWriter(elementID, word, flag, i + 1), speed);
+    setTimeout(() => typeWriter(elementID, word, flag, i + 1), speed);
   } else {
     cursorElement.classList.add('blink');
     if (flag == 0) applyFade(elementID, word);
@@ -66,9 +65,12 @@ function interruptFade() {
     const newTextContainer = document.createElement("p");
     newTextContainer.id = "interrupt-text";
     newTextContainer.style.marginTop = "20px";
-    document.body.appendChild(newTextContainer);
+    const textSpan = document.createElement("span");
+    textSpan.id = "interrupt-text-span";
+    newTextContainer.appendChild(textSpan);
     newTextContainer.appendChild(cursor);
-    clearTimeout(typingTracker);
+    document.body.appendChild(newTextContainer);
+
     text = "blah blah blah";
     typeWriter("interrupt-text", "", 1); 
 }
